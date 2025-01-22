@@ -20,7 +20,7 @@ def create_app(config_class="instance.config.Config"):
     csrf.init_app(app)
     CORS(app)  # Protege contra ataques Cross-Origin Resource Sharing
     
-    from .views import main_bp
+    from ...app.views import main_bp
     app.register_blueprint(main_bp)
 
     return app
