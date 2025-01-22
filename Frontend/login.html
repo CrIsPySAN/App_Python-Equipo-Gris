@@ -1,13 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="shortcut icon" href=""> <!--Icono de la aplicacion-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link rel='stylesheet'
+        href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel="stylesheet" href="/Frontend/CSS/login.css">
+    <link rel="stylesheet" href="/Frontend/CSS/normalize.css">
 </head>
+
 <body>
-    
+    <div class="container">
+        <div class="login-card">
+            <div class="welcome-section">
+                <h1>Welcome Back</h1>
+                <p>¡Nos alegra tenerte aquí! Con nuestra plataforma, podrás organizar tareas, colaborar con tu equipo y
+                    alcanzar todos tus objetivos eficientemente.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/87/87390.png" alt="Instagram" width="20"
+                            height="20">
+                    </a>
+                    <a href="#" class="social-icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/20/20673.png" alt="Facebook" width="20"
+                            height="20">
+                    </a>
+                    <a href="#" class="social-icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/81/81609.png" alt="Twitter" width="20"
+                            height="20">
+                    </a>
+                </div>
+            </div>
+            <div class="signin-section">
+                <h2>Sign in</h2>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <span class="icon"><i class="fi fi-rr-envelope"></i></span>
+                        <input type="email" id="email" placeholder="Email" required>
+                    </div>
+                    <div class="input-group">
+                        <span class="icon"><i class="fi fi-rr-key"></i></span>
+                        <input type="password" id="password" placeholder="Password" required>
+                    </div>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                    <button type="submit" class="login-btn">Iniciar sesión</button>
+                    <div class="register-section">
+                        <p>No te has registrado? <a href="#">Crea una cuenta</a></p>
+                        <div class="divider">OR</div>
+                        <div class="social-login">
+                            <button type="button" class="google-btn">
+                                <img src="https://cdn-icons-png.flaticon.com/512/2991/2991147.png" alt="Google"
+                                    width="25" height="25">
+                            </button>
+                            <button type="button" class="facebook-btn">
+                                <img src="https://cdn-icons-png.flaticon.com/512/20/20673.png" alt="Facebook" width="25"
+                                    height="25">
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
+
 </html>
