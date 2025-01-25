@@ -60,16 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
-    // Implementar funcionalidad de zoom
-    const zoomButton = document.querySelector('.zoom-in');
-    let zoomLevel = 100;
-    zoomButton.addEventListener('click', function() {
-        zoomLevel += 10;
-        if (zoomLevel > 150) zoomLevel = 100;
-        document.body.style.zoom = zoomLevel + '%';
-    });
-
-    // Crear tarjetas de ejemplo al cargar la página
     createSampleCards();
 });
+
+
