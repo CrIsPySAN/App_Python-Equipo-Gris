@@ -3,6 +3,7 @@ from flask_login import login_user, logout_user, login_required, current_user
 from urllib.parse import urlparse, urljoin
 from models.user import User
 from utils.db import db
+from flask_dance.contrib.google import google
 from utils.validators import validate_registration
 import logging
 
@@ -76,6 +77,33 @@ def logout():
     logout_user()
     flash('Has cerrado sesión exitosamente.', 'success')
     return redirect(url_for('login.login_route'))
+
+
+@login.route('/login/google')
+def google_login():
+    if not google.authorized:
+        return redirect(url_for('google.login'))
+    resp = google.get('/oauth2/v2/userinfo')
+    if not resp.ok:
+        flash("Error al obtener información del usuario de Google.", "error")
+        return redirect(url_for('login.login_route'))
+    
+    google_info = resp.json()
+    email = google_info['email']
+    user = User.query.filter_by(email=email).first()
+    if not user:
+        username = email.split('@')[0]
+        user = User(username=username, email=email)
+        db.session.add(user)
+        db.session.commit()
+        logging.info(f"Nuevo usuario registrado con Google: {username}")
+    
+    login_user(user)
+    flash('Inicio de sesión con Google exitoso.', 'success')
+    return redirect(url_for('login.dashboard'))
+
+
+
 
 def is_safe_url(target):
     ref_url = urlparse(request.host_url)
