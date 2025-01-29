@@ -4,11 +4,16 @@ from utils.db import db, init_db
 from models.user import User
 import logging
 from flask_migrate import Migrate
+from dotenv import load_dotenv
+import os
+
+# Cargar variables de entorno
+load_dotenv()
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost:3306/login'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = 'tu_clave_secreta_aqui'  
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -25,4 +30,3 @@ def load_user(user_id):
 
 from routes.login import login as login_blueprint
 app.register_blueprint(login_blueprint)
-
